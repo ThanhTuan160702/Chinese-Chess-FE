@@ -23,7 +23,7 @@ const Home1 = () => {
     const ctx = canvas.getContext('2d');
     const cellSize = 54;
     let selectedPiece = null;
-    // Vẽ bàn cờ và đặt hình ảnh
+
     const pieces = [
       { image: new Image(), x: 1 * cellSize - 25, y: 4 * cellSize - 25, width: 50, height: 50, name: 'TotDo', src: TotDo },
       { image: new Image(), x: 3 * cellSize - 25, y: 4 * cellSize - 25, width: 50, height: 50, name: 'TotDo', src: TotDo },
@@ -144,7 +144,6 @@ const Home1 = () => {
         ctx.lineTo(x + 5, y + 5);
         ctx.lineTo(x + 5, y + length);
 
-        // Đặt hình ảnh
       } else if ((j === 4 || j === 7) && i === 9) {
         ctx.moveTo(x - length, y - 5);
         ctx.lineTo(x - 5, y - 5);
@@ -182,8 +181,7 @@ const Home1 = () => {
     };
 
     const drawSquareAroundPiece = (piece) => {
-      // Vẽ hình vuông rỗng xung quanh quân cờ
-      ctx.strokeStyle = 'red'; // Màu viền hình vuông
+      ctx.strokeStyle = 'red';
       ctx.lineWidth = 2;
       ctx.beginPath();
       ctx.rect(piece.x - 5, piece.y - 5, piece.width + 10, piece.height + 10);
@@ -244,14 +242,14 @@ const Home1 = () => {
           x >= piece.x && x <= piece.x + piece.width &&
           y >= piece.y && y <= piece.y + piece.height
         ) {
-          isOverPiece = true; // Đặt cờ hiệu để thay đổi con trỏ chuột
+          isOverPiece = true;
         }
       });
 
       if (isOverPiece) {
-        canvas.style.cursor = 'pointer'; // Thay đổi con trỏ thành biểu tượng click
+        canvas.style.cursor = 'pointer';
       } else {
-        canvas.style.cursor = 'default'; // Trở về con trỏ mặc định
+        canvas.style.cursor = 'default';
       }
     };
 
@@ -268,8 +266,6 @@ const Home1 = () => {
   return (
     <div className='bg-white flex items-center justify-center w-[70%] min-h-screen'>
       <div className='relative w-[540px] h-[600px]'>
-        
-        {/* Thêm canvas để vẽ bàn cờ */}
         <canvas id="chessboard" width="540" height="600" className='absolute top-0 left-0' style={{ border: '1px solid black' }}></canvas>
       </div>
     </div>
